@@ -2,7 +2,8 @@ shapeCompare
 ============
 
 A tool to visualise and compare multiple SHAPE experiment data.
-Copyright (C) 2013  Guilhem DOULCIER
+
+Copyright (C) 2012, 2013  Guilhem DOULCIER
 
 ShapeCompare is a software for GNU/linux, Mac OS and Windows made to visualise and compare results of high-throughput Selective 2′-Hydroxyl Acylation analysed Primer Extension (hSHAPE) experiments. 
 
