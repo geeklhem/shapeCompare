@@ -11,7 +11,7 @@ from numpy import recfromtxt
 __author__ = "Guilhem Doulcier"
 __copyright__ = "Copyright 2012, 2013, Guilhem Doulcier"
 __license__ = "GPL"
-__version__ = str(recfromtxt("version.txt"))
+__version__ = str(recfromtxt("../version.txt"))
 __email__ = "guilhem.doulcier@ens.fr"
 __date__ = "2013"
 
