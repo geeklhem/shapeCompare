@@ -20,10 +20,11 @@ class ShapeData():
     alignement = Fasta(options.FASTA_ALG)
     sequences = Fasta(options.FASTA_FILE)
 
-    def __init__(self,data,sequenceFile):
-        self.sequence = self.sequences.sequences[sequenceFile]
-        self.sequence_alg = self.alignement.sequences[sequenceFile]
-        
+    def __init__(self,data,name):
+        self.sequence = self.sequences.sequences[name]
+        self.sequence_alg = self.alignement.sequences[name]
+
+        self.name = name
         self.names= []
         self.nb_files = len(data)
 

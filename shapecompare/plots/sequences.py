@@ -1,5 +1,8 @@
 palette = ['#66CCFF','#33FF33','#FFFF33','#FF6600',"#FF0000","#CCCCCC","#AA0078"] 
 model_palette = ["#FF0000",'#66CCFF'] 
+bbox_exp = dict(boxstyle="square", fc="w", ec="0.5",alpha=0.9)
+bbox_model = dict(boxstyle="square", fc="w", ec="0.5", alpha=0.9)
+
 from matplotlib.collections import PatchCollection
 import matplotlib.patches as mpatches
 from matplotlib.ticker import NullFormatter
@@ -26,7 +29,6 @@ def plot(plt,shapeData,display="all",models={}):
         for (i,base) in enumerate(sd.sequence_alg):
             if base != "-": #Alignement
                 n += 1
-
                 # Experimental data
                 for exp in range(sd.reactivity.shape[0]):
                     plt.text(i+0.5,nb_models+exp+line+0.4,str(base))
@@ -56,9 +58,9 @@ def plot(plt,shapeData,display="all",models={}):
 
         #Label lines
         for w, name in enumerate(sd.names):
-                plt.text(i-1,line-nb_exp+w+0.1,"["+k+"]: "+name)
+                plt.text(i-1,line-nb_exp+w+0.1,"["+k+"]: "+name,bbox=bbox_exp)
         for j , m in enumerate(selected_models):
-                plt.text(i-1,line-1-w-nb_models+j+0.1,"["+k+"]: "+m.name+" model")
+                plt.text(i-1,line-1-w-nb_models+j+0.1,"["+k+"]: "+m.name+" model",bbox=bbox_model)
         n = -1
 
     collection = PatchCollection(patches,match_original=True)

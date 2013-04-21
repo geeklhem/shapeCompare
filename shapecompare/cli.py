@@ -138,6 +138,9 @@ if __name__ == '__main__':
         import plots as plt
         ax = plt.fig.add_subplot(111)
         plt.sequences.plot(ax,shapeData,models=models)
+        #plt.histo.reactivity_mean(ax,shapeData["7SK_Human"])
+        #plt.histo.scatter(ax,shapeData["7SK_Human"])
+        #plt.histo.reactivity_uniq(ax,shapeData["7SK_Human"],0)
         plt.plot.show()
     except Exception, e:
             print("\nError in plotting: (Error:" + str(sys.exc_info()[0])+")")
