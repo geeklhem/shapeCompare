@@ -85,15 +85,16 @@ if __name__ == '__main__':
     # --------------------------------------------------------------------------
     if verbose:
         print("\nData analysis...")
-    for d in data:
- 	for key, data in sorted_data.iteritems():
-            try:
-                shapeData[key] = ShapeData(data,key)    
-            except Exception, e:
-                print("\nError in processing: "+key+" (Error:" + str(sys.exc_info()[0])+")")
-                print traceback.format_exc()
-
-
+    
+    for key, datum in sorted_data.iteritems():
+        if verbose:
+            print("-"+key)
+        try:
+            pass
+            shapeData[key] = ShapeData(datum,key)    
+        except Exception, e:
+            print("\nError in processing: "+key+" (Error:" + str(sys.exc_info()[0])+")")
+            print traceback.format_exc()
 
 
     # --------------------------------------------------------------------------
@@ -103,3 +104,4 @@ if __name__ == '__main__':
     ax = plt.fig.add_subplot(111)
     plt.sequences.plot(ax,shapeData)
     plt.plot.show()
+    

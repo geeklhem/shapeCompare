@@ -5,7 +5,6 @@ class Fasta():
         data = np.recfromtxt(path)
         i = -1
         self.sequences = {}
-        #self.names={}
         for l in data:
             if ">" in l:
                 name = l[1:] #To strip the >

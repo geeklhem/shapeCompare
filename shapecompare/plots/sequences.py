@@ -23,8 +23,7 @@ def plot(plt,shapeData):
 										  edgecolor='none',
 										  fc=react_color[color]))
 					n = n+1
-				else: 
-					print("-")
+		                
 			exp_offset += sd.reactivity.shape[0]
 			n = 0
 

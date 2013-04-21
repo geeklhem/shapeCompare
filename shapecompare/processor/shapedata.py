@@ -34,8 +34,6 @@ class ShapeData():
         for k,d in enumerate(data):
             len_experiment = len(d.peak_reactivity)
             for j in range(len_experiment):
-                #pos = len_experiment-j-1 
-                #pos = len_experiment-j
                 pos = -(j + d.offset_bases)
                 self.reactivity[k,pos] = d.peak_reactivity[j]
                 if d.colors[j] == -1:
@@ -46,7 +44,13 @@ class ShapeData():
         
         ## STATISTICAL OPERATION
         self.mean_flex = mean(self.reactivity,0)
-        self.compute_variability()
+        self.var = std(self.reactivity,0)
+        self.mean_reactivity_class = zeros(len(self.sequence))
+        self.variability_class = zeros(len(self.var))
+
+
+        if self.nb_files>1:
+            self.compute_variability()
 
     def compute_cor(self,base):
         r = []
@@ -64,7 +68,7 @@ class ShapeData():
         return("<Shape Variability Object on "+str(self.nb_files)+" file(s)>")
     
     def compute_variability(self):
-        self.mean_reactivity_class = zeros(len(self.sequence))
+       
 
         for i, flex in enumerate(self.mean_flex):
             if flex<0: #Unknown
@@ -75,10 +79,9 @@ class ShapeData():
                 self.mean_reactivity_class[i] = int(floor(flex*5)) 
         
         #I use var to name variable but i've ended in using standard deviation instead of variance.
-        self.var = std(self.reactivity,0)
         self.varmean = mean(self.var)
         self.sd_of_var = std(self.var)
-        self.variability_class = zeros(len(self.var))
+
         for i,v in enumerate(self.var):
             self.variability_class[i] = int(abs(self.varmean - v)/self.sd_of_var)
             if self.variability_class[i] >= 1:
