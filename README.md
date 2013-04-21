@@ -12,22 +12,40 @@ Features
 See http://www.eleves.ens.fr/home/doulcier/shapecompare/ for an overview.
 
 Usage
-------
-`python cli.py folders...  [PARAMETERS]...`
+-----
 
-`./cli.py folders...  [PARAMETERS]...`
+```sh
+    cli.py sequences <folders>...  [-v | -o <path>]
+    cli.py (histo|scatter) <folders>...  [--rna <seq_name> | -v | -o <path>]
+    cli.py twod <folders>...  --model <model_name> [--rna <seq_name> | -v | -o <path>]
+    cli.py (-i|--interactive) <folders>...   [-v] 
+    cli.py (-h | --help)
+    cli.py --version
+    cli.py --license
 
+    Commands:
+      sequence <folders>...  Align on a sequence multiple experiments.
+      histo <folders>...     Bar-plot of reactivity (sequence order).
+      scatter <folders>...   Scatter plot of mean reactivity (sorted).
+      twod <folders>...      Mean reactivity on a secondary structure template.
 
-- folders... :  *.shape folder(s) from Shape Finder or folder(s) containing multiple *.shape folders.
+    Nb. <folders>... can either be ".shape" folder(s) or folder(s) containing them.
+    (In the last case all .shape sub-folders will be evaluated.)
 
-*PARAMETERS*
-
-- -v : verbose mode
-- -l : license information
+    Options:
+    -v --verbose             Execute in verbose mode.
+    -i --interactive         Execute in interactive mode. (Not implemented yet).
+    -o --output-file <path>  Save the plot in a file instead of displaying it.
+    --rna <seq_name>         RNA sequence to show (must be in the fasta file).
+    --model <model_name>     Model of secondary structure to use.
+    -h --help                Show this screen.
+    --version                Show version.
+    --license                Show license information.
+```
 
 ### Example
 All experiments in the data_coreset folder:
-`./cli.py ../data/shape/data_coreset/ -v `
+`python cli.py histo ../data/shape/data_coreset/ -v `
 
 One file only:
 `./cli.py ../data/shape/data_coreset/7SKWT_RTH_MC5_fit.shape/ `
@@ -42,11 +60,10 @@ Requirement
 ----------
 ShapeCompare is written in python 2.7 and needs the following library :
 
--    Numpy and Scipy
--    Matplotlib
-
+-    [Numpy](http://www.scipy.org/) and [Scipy](http://www.scipy.org/)
+-    [Matplotlib](http://matplotlib.org/)
+-    [Docopt](https://github.com/docopt/docopt) (Included)
  
-
 License
 ------
 
