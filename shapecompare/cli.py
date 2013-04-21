@@ -111,6 +111,6 @@ if __name__ == '__main__':
     # --------------------------------------------------------------------------
     import plots as plt
     ax = plt.fig.add_subplot(111)
-    plt.sequences.plot(ax,shapeData)
+    plt.sequences.plot(ax,shapeData,models=models)
     plt.plot.show()
     

@@ -1,11 +1,19 @@
 from numpy import *
 import options
+from fasta import Fasta
 
 class Model():
     """Encapsulate a secondary structure model informations."""
-    
-    def __init__(self,name):
+    sequences = Fasta(options.FASTA_FILE)
+    def __init__(self,name,rna=False):
         self.name = name
+
+        if not rna:
+            self.rna = self.sequences.sequences.keys()[-1] #by default sequence is the first 
+        else:
+            self.rna = rna
+
+
         try:
             self.position = recfromtxt(options.MODEL_PATH+
                                        self.name+"_pos.csv",
