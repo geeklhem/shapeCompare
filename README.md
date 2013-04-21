@@ -50,6 +50,16 @@ All experiments in the data_coreset folder:
 One file only:
 `./cli.py ../data/shape/data_coreset/7SKWT_RTH_MC5_fit.shape/ `
 
+How To
+------
+How to get ShapeCompare to play nice with your data ? Follow this steps :
+
+1. Get the the code
+2. Construct the files corresponding to your favorite RNA : you will need a fasta file with the sequences, and an other with the alignment. (Inspire you from the one I've made for 7SK to get started) 
+3. Modify the `options.py` file accordingly.
+4. Your data should be in aligned ShapeFinder format (*.shape folder with `procTrace.aln` inside). If the sequence is different from the first of the fasta file (e.g. mutant) put a `seq.txt` file inside containing the sequence name to match.</li>
+5. Enjoy ! (Don't forget the `--help` option).
+
 
 Options 
 -------
