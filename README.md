@@ -1,4 +1,4 @@
-shapeCompare
+ShapeCompare
 ============
 
 A tool to visualise and compare multiple SHAPE experiment data.
@@ -11,14 +11,21 @@ Requirement
 ===========
 ShapeCompare is written in python 2.7 and needs the following library :
 
-    Numpy and Scipy
-    Matplotlib
-    Traits and TraitsUI
-
+-    Numpy and Scipy
+-    Matplotlib
 
 Documentation
 =============
-See http://www.eleves.ens.fr/home/doulcier/shapecompare/ .
+Short :
+
+Usage : cli.py folders (*.shape or a folder containing them) [OPTIONS]...
+
+OPTIONS:
+-v : Verbose mode
+-l : licence informations
+
+
+for more see http://www.eleves.ens.fr/home/doulcier/shapecompare/ .
 
 Licence
 =======
