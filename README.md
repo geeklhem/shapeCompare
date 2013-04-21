@@ -1,34 +1,54 @@
+![logo](shapecompare.png "ShapeCompare logo")
 ShapeCompare
 ============
-
-A tool to visualise and compare multiple SHAPE experiment data.
+A tool to visualize and compare multiple SHAPE experiment data.
 
 Copyright (C) 2012, 2013  Guilhem DOULCIER
 
-ShapeCompare is a software for GNU/linux, Mac OS and Windows made to visualise and compare results of high-throughput Selective 2′-Hydroxyl Acylation analysed Primer Extension (hSHAPE) experiments. 
+ShapeCompare is a free software for GNU/Linux, Mac OS and Windows made to visualize and compare results of high-throughput Selective 2′-Hydroxyl Acylation analyzed Primer Extension (hSHAPE) experiments. 
+
+Features
+------
+See http://www.eleves.ens.fr/home/doulcier/shapecompare/ for an overview.
+
+Usage
+------
+`python cli.py folders...  [PARAMETERS]...`
+
+`./cli.py folders...  [PARAMETERS]...`
+
+
+- folders... :  *.shape folder(s) from Shape Finder or folder(s) containing multiple *.shape folders.
+
+*PARAMETERS*
+
+- -v : verbose mode
+- -l : license information
+
+### Example
+All experiments in the data_coreset folder:
+`./cli.py ../data/shape/data_coreset/ -v `
+
+One file only:
+`./cli.py ../data/shape/data_coreset/7SKWT_RTH_MC5_fit.shape/ `
+
+
+Options 
+-------
+You can modify several aspect of shapeCompare behavior by editing the `options.py` file. 
+
 
 Requirement
-===========
+----------
 ShapeCompare is written in python 2.7 and needs the following library :
 
 -    Numpy and Scipy
 -    Matplotlib
 
-Documentation
-=============
-Short :
+ 
 
-Usage : cli.py folders (*.shape or a folder containing them) [OPTIONS]...
-
-OPTIONS:
-- -v : Verbose mode
-- -l : licence informations
-
-
-for more see http://www.eleves.ens.fr/home/doulcier/shapecompare/ .
-
-Licence
-=======
+License
+------
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
