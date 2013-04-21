@@ -23,4 +23,5 @@ MATCH_THRESHOLD = 0.8
 # 2d Structure models consist of two csv files begining with the same name.
 # - name_pos.csv : x,y position of the base for plotting
 # - name_app.csv : 1 if the base is apparied, 0 if it's not.
+# - name_seq.txt : (optional) name of the sequence (in the fasta file). (default : first one)   
 MODEL_PATH = "../data/models/"

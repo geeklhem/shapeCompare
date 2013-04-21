@@ -68,14 +68,21 @@ if __name__ == '__main__':
 
 
     if verbose:
-        print(str(len(data)) + " files loaded.\n")
+        print(str(len(data)) + " experiment files loaded.")
 
 
     #Loading models
     for f in glob.glob(options.MODEL_PATH+"*.csv"):
         name = f.split("/")[-1].split("_")[0]
         if name not in models.keys():
-            models[name] = Model(name)
+            try:
+                models[name] = Model(name)
+            except Exception, e:
+                    print("Error in importing: " +name+" model (Error code :" + str(sys.exc_info()[0])+")")
+
+    if verbose:
+        print(str(len(models)) + " model files loaded.")
+
 
     # --------------------------------------------------------------------------
     # SORTING
@@ -87,7 +94,8 @@ if __name__ == '__main__':
             sorted_data[d.seq_type].append(d)
         else:
             sorted_data[d.seq_type] = [d]
-
+    for key, m in models.iteritems():
+        print("-"+m.name+" model is "+m.rna)
 
     # --------------------------------------------------------------------------
     # ANALYSING

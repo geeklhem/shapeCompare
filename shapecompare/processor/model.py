@@ -5,13 +5,13 @@ from fasta import Fasta
 class Model():
     """Encapsulate a secondary structure model informations."""
     sequences = Fasta(options.FASTA_FILE)
-    def __init__(self,name,rna=False):
+    def __init__(self,name):
         self.name = name
 
-        if not rna:
-            self.rna = self.sequences.sequences.keys()[-1] #by default sequence is the first 
-        else:
-            self.rna = rna
+        try:
+            self.rna= str(recfromtxt(options.MODEL_PATH+self.name+"_seq.txt"))
+        except:
+            self.rna = self.sequences.sequences.keys()[-1] #by default sequence is the first of the fasta file
 
 
         try:
