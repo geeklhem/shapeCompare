@@ -13,7 +13,7 @@ __copyright__ = "Copyright 2012, 2013, Guilhem Doulcier"
 __license__ = "GPL"
 __version__ = str(recfromtxt("version.txt"))
 __email__ = "guilhem.doulcier@ens.fr"
-__date__ = "April 2013"
+__date__ = "2013"
 
 if __name__ == '__main__':
     
