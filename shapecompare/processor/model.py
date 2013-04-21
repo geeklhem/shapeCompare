@@ -18,9 +18,15 @@ class Model():
             self.position = recfromtxt(options.MODEL_PATH+
                                        self.name+"_pos.csv",
                                        delimiter=",",dtype=float)
-       
+            
+            self.position[:,0] -= min(self.position[:,0])
+            self.position[:,1] -= min(self.position[:,1])
             self.position = self.position/amax(self.position)
-      
+            if max(self.position[:,0]) == 1:
+                self.position[:,1] += (1 - max(self.position[:,1]))/2
+            else:
+                self.position[:,0] += (1 - max(self.position[:,0]))/2
+  
         except:
             print("Position file of "+name+" model absent or corrupted")
             self.position = zeros((300,2))
