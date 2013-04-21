@@ -31,7 +31,7 @@ if __name__ == '__main__':
         print("-l : licence informations")
         sys.exit(2)
    
-    if verbose:
+    if verbose or "-l" in args:
         print('\nShapeCompare v'+__version__+" - Command line mode")
         print("Copyright (C) 2012,2013 Guilhem DOULCIER \n    This program comes with ABSOLUTELY NO WARRANTY.\n    This program is free software: you can redistribute it and/or modify\n    it under the terms of the GNU General Public License as published by\n    the Free Software Foundation, either version 3 of the License, or\n    (at your option) any later version.")
    
@@ -53,8 +53,13 @@ if __name__ == '__main__':
             try:
                 data.append(ShapeConvertor(arg,name))
             except Exception, e:
-                print("Error in importing: " +name+" (Error code :" + str(sys.exc_info()[0])+")")
-                print traceback.format_exc()
+                print("Error in importing: " +name+
+                      " (Error code :" + str(sys.exc_info()[0])+")")
+                if verbose :
+                    print traceback.format_exc()
+                else:
+                    print("Use -v for more information")
+    
 
         elif arg[-1] == "/":
             for f in glob.glob(arg+"*.shape"):
@@ -62,9 +67,13 @@ if __name__ == '__main__':
                 try:
                     data.append(ShapeConvertor(f,name))
                 except Exception, e:
-                    print("Error in importing: " +name+" (Error code :" + str(sys.exc_info()[0])+")")
-                    print traceback.format_exc()
-
+                    print("Error in importing: " +name+
+                          " (Error code :" + str(sys.exc_info()[0])+")")
+                    if verbose:
+                        print traceback.format_exc()
+                    else:
+                        print("Use -v for more information")
+                          
 
 
     if verbose:
@@ -79,6 +88,11 @@ if __name__ == '__main__':
                 models[name] = Model(name)
             except Exception, e:
                     print("Error in importing: " +name+" model (Error code :" + str(sys.exc_info()[0])+")")
+                    if verbose:
+                          print traceback.format_exc()      
+                    else:
+                          print("Use -v for more information")
+    
 
     if verbose:
         print(str(len(models)) + " model files loaded.")
@@ -107,18 +121,28 @@ if __name__ == '__main__':
         if verbose:
             print("-"+key)
         try:
-            pass
             shapeData[key] = ShapeData(datum,key)    
         except Exception, e:
             print("\nError in processing: "+key+" (Error:" + str(sys.exc_info()[0])+")")
-            print traceback.format_exc()
-
+            if verbose :
+                print traceback.format_exc()
+            else:
+                print("Use -v for more information")
+    
 
     # --------------------------------------------------------------------------
     # DISPLAY
     # --------------------------------------------------------------------------
-    import plots as plt
-    ax = plt.fig.add_subplot(111)
-    plt.sequences.plot(ax,shapeData,models=models)
-    plt.plot.show()
+
+    try:
+        import plots as plt
+        ax = plt.fig.add_subplot(111)
+        plt.sequences.plot(ax,shapeData,models=models)
+        plt.plot.show()
+    except Exception, e:
+            print("\nError in plotting: (Error:" + str(sys.exc_info()[0])+")")
+            if verbose :
+                print traceback.format_exc()
+            else:
+                print("Use -v for more information")
     
