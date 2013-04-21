@@ -18,3 +18,9 @@ FASTA_ALG = "../data/sequences/7SK_alg.fasta"
 
 # Minimal proportion of bases to match between the .shape and the .fasta file.
 MATCH_THRESHOLD = 0.8
+
+# Location of secondary struture model files
+# 2d Structure models consist of two csv files begining with the same name.
+# - name_pos.csv : x,y position of the base for plotting
+# - name_app.csv : 1 if the base is apparied, 0 if it's not.
+MODEL_PATH = "../data/models/"

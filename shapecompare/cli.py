@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
-
 """ Command line version of the shapeCompare tool"""
+
 import sys
 import glob
-from processor.shapedata import ShapeConvertor, ShapeData
 import traceback
 from numpy import recfromtxt
+
+import options
+from processor.shapedata import ShapeConvertor, ShapeData
+from processor.model import Model
 
 __author__ = "Guilhem Doulcier"
 __copyright__ = "Copyright 2012, 2013, Guilhem Doulcier"
@@ -35,7 +38,7 @@ if __name__ == '__main__':
     data = []
     sorted_data = {}
     shapeData = {}
-
+    models = {}
 
     # --------------------------------------------------------------------------
     ### LOADING
@@ -67,6 +70,12 @@ if __name__ == '__main__':
     if verbose:
         print(str(len(data)) + " files loaded.\n")
 
+
+    #Loading models
+    for f in glob.glob(options.MODEL_PATH+"*.csv"):
+        name = f.split("/")[-1].split("_")[0]
+        if name not in models.keys():
+            models[name] = Model(name)
 
     # --------------------------------------------------------------------------
     # SORTING
