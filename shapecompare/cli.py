@@ -6,13 +6,13 @@ import sys
 import glob
 from processor.shapedata import ShapeConvertor, ShapeData
 import traceback
+from numpy import recfromtxt
 
 __author__ = "Guilhem Doulcier"
 __copyright__ = "Copyright 2012, 2013, Guilhem Doulcier"
 __license__ = "GPL"
-__version__ = "0.4"
+__version__ = str(recfromtxt("version.txt"))
 __email__ = "guilhem.doulcier@ens.fr"
-__status__ = "Beta"
 __date__ = "April 2013"
 
 if __name__ == '__main__':
