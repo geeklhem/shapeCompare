@@ -21,8 +21,8 @@ Short :
 Usage : cli.py folders (*.shape or a folder containing them) [OPTIONS]...
 
 OPTIONS:
--v : Verbose mode
--l : licence informations
+- -v : Verbose mode
+- -l : licence informations
 
 
 for more see http://www.eleves.ens.fr/home/doulcier/shapecompare/ .
